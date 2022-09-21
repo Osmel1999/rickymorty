@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:interviewapp/preferences/shared_preference.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +13,6 @@ class HomePage extends StatefulWidget {
 
 int index = 0;
 List<String> db_option = ["character", "location", "episode"];
-// List favorites = [];
 
 class _HomePageState extends State<HomePage> {
   @override
@@ -23,7 +20,6 @@ class _HomePageState extends State<HomePage> {
     final service = Provider.of<Service>(context);
     final pref = PreferenciasUsuario();
 
-    // favorites = pref.favorites;
     return Scaffold(
       appBar: AppBar(
         title: const Center(child: Text("Rick & Morthy")),
@@ -72,7 +68,6 @@ class _HomePageState extends State<HomePage> {
                           .contains("${service.respMap[i]["name"]}")) {
                         temp.add("${service.respMap[i]["name"]}");
                         pref.favorites = temp;
-                        ;
                       } else {
                         temp.remove("${service.respMap[i]["name"]}");
                         pref.favorites = temp;
@@ -101,7 +96,6 @@ class _HomePageState extends State<HomePage> {
           index = i;
           service.db_selected = db_option[i];
           await service.initConfig();
-          print("index: $index");
           setState(() {});
         },
       ),

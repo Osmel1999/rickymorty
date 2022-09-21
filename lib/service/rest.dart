@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +16,6 @@ class Service with ChangeNotifier {
       final resp = await dio.get(url + db_selected);
       respMap = resp.data["results"];
     } catch (e) {
-      print(e);
       respMap = [];
     }
     notifyListeners();
